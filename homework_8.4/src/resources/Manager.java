@@ -1,18 +1,42 @@
 package src.resources;
 
-import src.Company;
+public class Manager implements Employee {
 
-public class Manager extends HumanResources {
+
+    private Integer salary;
+    private String name;
+    private int income;
 
     @Override
-    public int getIncome() {
-        int salary = (int) ( 115000 + Math.random() * 25000);
-        return (int) (salary * 0.05) + salary;
+    public Integer getSalary() {
+        return salary;
     }
 
     @Override
-    public void newEmployee(String nameCandidate,Integer salary) {
-        employees.put(nameCandidate,20000 * getIncome());
-        System.out.println("Добро пожаловать " + nameCandidate + " Ваша зарплата составляет " + getIncome() + " руб");
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setSalary(Integer salary) {
+        getIncome();
+        this.salary = salary + (int)(income * 0.05);
+
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+
+    }
+
+    @Override
+    public int getMonthSalary() {
+        return 0;
+    }
+
+    public int getIncome() {
+        this.income = (int) ( 115000 + Math.random() * 25000);
+        return this.income;
     }
 }

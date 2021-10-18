@@ -1,11 +1,34 @@
 package src.resources;
 
-public class Operator extends HumanResources {
+public class Operator implements Employee {
 
+    private Integer salary;
+    private String name;
 
     @Override
-    public void newEmployee(String nameCandidate,Integer salary) {
-        employees.put(nameCandidate,20000);
-        System.out.println("Добро пожаловать " + nameCandidate + " Ваша зарплата составляет " + "20.000" + " руб");
+    public Integer getSalary() {
+        return salary;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+
+    }
+
+    @Override
+    public int getMonthSalary() {
+        return 0;
     }
 }
