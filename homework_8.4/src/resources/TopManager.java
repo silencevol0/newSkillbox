@@ -1,10 +1,16 @@
 package src.resources;
 
+import com.github.javafaker.Faker;
+
 public class TopManager implements Employee {
 
     private Integer salary;
     private String name;
     private int income;
+    private String post;
+    Faker faker = new Faker();
+    Company company = new Company();
+
 
     @Override
     public Integer getSalary() {
@@ -17,19 +23,27 @@ public class TopManager implements Employee {
     }
 
     @Override
-    public void setSalary(Integer salary) {
-        this.salary = salary + (int)(income * 0.05);
-
+    public void setSalary() {
+        if(company.getAllIncome() < 10000000) {
+            this.salary = randomFixTopManagerSalary() + (int) (income * 0.05);
+        }
+        else {
+            this.salary = (int)((randomFixTopManagerSalary() + (int) (income * 0.05)) * 1.5);
+        }
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setName() {
+        this.name = faker.name().firstName();
 
     }
-
+    public int randomFixTopManagerSalary() {
+        this.income = (int) ( 100000 + Math.random() * 15000);
+        return this.income;
+    }
     @Override
-    public int getMonthSalary() {
-        return 0;
+    public String getPost() {
+        this.post = getClass().toString().replaceFirst(".*(?=\\.)." , "");
+        return post;
     }
 }

@@ -1,9 +1,13 @@
 package src.resources;
 
+import com.github.javafaker.Faker;
+
 public class Operator implements Employee {
 
     private Integer salary;
     private String name;
+    private String post;
+    Faker faker = new Faker();
 
     @Override
     public Integer getSalary() {
@@ -16,19 +20,22 @@ public class Operator implements Employee {
     }
 
     @Override
-    public void setSalary(Integer salary) {
-        this.salary = salary;
-
+    public void setSalary() {
+        this.salary = randomFixOperatorSalary(1);
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
-
+    public void setName() {
+        this.name = faker.name().firstName();
     }
 
+    public Integer randomFixOperatorSalary(int random) {
+        random  = (int) ( 50000 + Math.random() * 15000);
+        return random;
+    }
     @Override
-    public int getMonthSalary() {
-        return 0;
+    public String getPost() {
+        this.post = getClass().toString().replaceFirst(".*(?=\\.)." , "");
+        return post;
     }
 }

@@ -6,10 +6,10 @@ public interface Employee {
 
     String getName();
 
-    void setSalary(Integer salary);
+    void setSalary();
 
-    void setName(String name);
+    void setName();
 
-    int getMonthSalary();
+    String getPost();
 
 }
