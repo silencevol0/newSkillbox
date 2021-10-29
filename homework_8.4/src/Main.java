@@ -27,21 +27,25 @@ public class Main {
             company.hire(manager);
         }
         for (int i = 0; i < 10; i++) {
-            TopManager topManager = new TopManager();
+            TopManager topManager = new TopManager("Microsoft");
             topManager.setName();
             topManager.setSalary();
             company.hire(topManager);
         }
-        company.getTopSalaryStaff(15);
-        company.getLowestSalaryStaff(30);
-        Integer i = 1;
-        while (i < company.getAllEmployees().size()) {
-            if (i % 2 == 0) {
-                company.fire(company.getAllEmployees().get(i));
-            }
-                i++;
-        }
-        company.getTopSalaryStaff(15);
-        company.getLowestSalaryStaff(30);
+        System.out.println(company.getTopSalaryStaff(5).toString());
+        //System.out.println(company.getAllEmployees().size()+ "<<<<< количество сотрудников в компании");
+        //company.getTopSalaryStaff(270);
+
+
+//        company.getLowestSalaryStaff(30);
+//        Integer i = 1;
+//        while (i < company.getAllEmployees().size()) {
+//            if (i % 2 == 0) {
+//                company.fire(company.getAllEmployees().get(i));
+//            }
+//                i++;
+//        }
+//        company.getTopSalaryStaff(15);
+//        company.getLowestSalaryStaff(30);
     }
 }

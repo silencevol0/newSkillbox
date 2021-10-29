@@ -8,8 +8,12 @@ public class TopManager implements Employee {
     private String name;
     private int income;
     private String post;
+    private String companyTopManager;
     Faker faker = new Faker();
     Company company = new Company();
+    public TopManager ( String company) {
+        this.companyTopManager = company;
+    }
 
 
     @Override

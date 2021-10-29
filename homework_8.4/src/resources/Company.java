@@ -42,18 +42,27 @@ public class Company {
     }
 
 
-    public void getTopSalaryStaff(int count) {
-        List<Employee> sortedList = getAllEmployees().stream().sorted(Comparator.comparingInt(Employee::getSalary)).collect(Collectors.toList());
-        System.out.println("\nЗарплаты в порядке возрастания:\n");
-        for (int i = 0; i < count; i++) {
-            System.out.println("Имя сотрудника - " + sortedList.get(i).getName()
-                    + ", Зарплата сотрудника - " + sortedList.get(i).getSalary() + ", Должность сотрудника " + sortedList.get(i).getPost());
-        }
-    }
-
-    public void getLowestSalaryStaff(int count) {
+    public List<Employee> getTopSalaryStaff(int count) {
+        List<Employee> sortedList = new ArrayList<>();
         if (count < 1 || count > allEmployees.size()) {
             System.out.println("Сотрудников меньше, чем список который вы хотите вывести, либо вы вводите отрицательное число");
+            return null;
+        }
+        else {
+            sortedList = getAllEmployees().stream().sorted(Comparator.comparingInt(Employee::getSalary)).collect(Collectors.toList());
+            System.out.println("\nЗарплаты в порядке возрастания:\n");
+            for (int i = 0; i < count; i++) {
+                System.out.println("Имя сотрудника - " + sortedList.get(i).getName()
+                        + ", Зарплата сотрудника - " + sortedList.get(i).getSalary() + ", Должность сотрудника " + sortedList.get(i).getPost());
+            }
+        }  return sortedList;
+
+    }
+
+    public List<Employee> getLowestSalaryStaff(int count) {
+        if (count < 1 || count > allEmployees.size()) {
+            System.out.println("Сотрудников меньше, чем список который вы хотите вывести, либо вы вводите отрицательное число");
+            return null;
         }
         else {
             TreeSet<Employee> topSorted = new TreeSet<>(new ComparatopSalary());
@@ -69,6 +78,7 @@ public class Company {
                 System.out.println("Имя сотрудника - " + topSortedList.get(i).getName()
                         + ", Зарплата сотрудника - " + topSortedList.get(i).getSalary() + ", Должность сотрудника " + topSortedList.get(i).getPost());
             }
+            return topSortedList;
         }
     }
 }
